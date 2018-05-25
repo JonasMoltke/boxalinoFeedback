@@ -65,4 +65,4 @@ class Boxalino_Intelligence_Block_Product_List_Parametrized extends Boxalino_Int
 
 }
 
-?>
+// We do not want to permit a closing tag at the end of a PHP file

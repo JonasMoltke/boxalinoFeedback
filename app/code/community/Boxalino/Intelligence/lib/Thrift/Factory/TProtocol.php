@@ -34,7 +34,7 @@ abstract class TProtocol {
   // or T_CONSTANT_ENCAPSED_STRING. Using "is_a()" instead of "instanceof" is
   // a workaround but is deprecated in PHP5. This is used in the generated
   // deserialization code.
-  static $TBINARYPROTOCOLACCELERATED = 'TBinaryProtocolAccelerated';
+  public static $TBINARYPROTOCOLACCELERATED = 'TBinaryProtocolAccelerated';
 
   /**
    * Underlying transport

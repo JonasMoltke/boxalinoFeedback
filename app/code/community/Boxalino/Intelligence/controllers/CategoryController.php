@@ -28,14 +28,14 @@ class Boxalino_Intelligence_CategoryController extends Mage_Catalog_CategoryCont
                 }
                 Mage::unregister('current_category');
                 Mage::unregister('current_entity_key');
-                if(isset($_REQUEST['bx_category_id']) && $_REQUEST['bx_category_id'] != 0) {
+                if(isset($_REQUEST['bx_category_id']) && $_REQUEST['bx_category_id'] != 0) { // Is there any reason not to use $this->getRequest()->getParam() here?
                     $catId = $this->getRequest()->getParam('id', false);
 
                     if ($catId) {
-                        if ($catId != $_REQUEST['bx_category_id']) {
+                        if ($catId != $_REQUEST['bx_category_id']) {  // Is there any reason not to use $this->getRequest()->getParam() here?
                             $_category = Mage::getModel('catalog/category')
                                 ->setStore(Mage::app()->getStore()->getId())
-                                ->load($_REQUEST['bx_category_id']);
+                                ->load($_REQUEST['bx_category_id']);  // Is there any reason not to use $this->getRequest()->getParam() here?
                             $url = $_category->getUrl($_category);
                             $this->getResponse()->setRedirect($url)->sendResponse();
                         }

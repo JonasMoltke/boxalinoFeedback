@@ -60,7 +60,7 @@ class P13nTCurlClient extends TCurlClient {
         }
     }
 
-    static function closeCurlHandle() {
+    public static function closeCurlHandle() {
         try {
             if (self::$curlHandle) {
                 curl_close(self::$curlHandle);

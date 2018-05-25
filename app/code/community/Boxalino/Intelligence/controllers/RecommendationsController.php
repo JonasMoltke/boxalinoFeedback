@@ -9,11 +9,12 @@ class Boxalino_Intelligence_RecommendationsController extends Mage_Core_Controll
       $block = $this->getLayout()->createBlock('Boxalino_Intelligence_Block_Product_List_Parametrized');
       $format = $block->getFormat();
 
+      //No reason for echo - if necessary use renderLayout
       if ($format == 'json') {
-        echo $this->getLayout()->createBlock('Boxalino_Intelligence_Block_Product_List_Parametrized')->setTemplate('boxalino\recommendation_json.phtml')->toHtml();
+          $this->getLayout()->createBlock('Boxalino_Intelligence_Block_Product_List_Parametrized')->setTemplate('boxalino\recommendation_json.phtml')->toHtml();
       }
       if ($format == 'html') {
-        echo $this->getLayout()->createBlock('Boxalino_Intelligence_Block_Product_List_Parametrized')->setTemplate('boxalino\recommendation.phtml')->toHtml();
+          $this->getLayout()->createBlock('Boxalino_Intelligence_Block_Product_List_Parametrized')->setTemplate('boxalino\recommendation.phtml')->toHtml();
       }
 
     }

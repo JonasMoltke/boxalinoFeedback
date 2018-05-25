@@ -37,7 +37,7 @@ class TSimpleServer extends TServer {
 		  $outputTransport = $this->outputTransportFactory_->getTransport($transport);
 		  $inputProtocol = $this->inputProtocolFactory_->getProtocol($inputTransport);
 		  $outputProtocol = $this->outputProtocolFactory_->getProtocol($outputTransport);
-		  while ($this->processor_->process($inputProtocol, $outputProtocol)) { }
+		  while ($this->processor_->process($inputProtocol, $outputProtocol)) { } //Should probably be replaced by foreach
 		}
 	  }
 	  catch (TTransportException $e) { }

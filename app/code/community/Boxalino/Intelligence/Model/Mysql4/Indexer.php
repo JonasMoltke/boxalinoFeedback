@@ -1767,7 +1767,7 @@ abstract class Boxalino_Intelligence_Model_Mysql4_Indexer extends Mage_Core_Mode
      */
     protected function loadBxLibrary(){
         $libPath = __DIR__ . '/../../lib';
-        require_once($libPath . '/BxClient.php');
+        require_once($libPath . '/BxClient.php'); // require_once instead of include_once - VERY appreciated
         \com\boxalino\bxclient\v1\BxClient::LOAD_CLASSES($libPath);
     }
 

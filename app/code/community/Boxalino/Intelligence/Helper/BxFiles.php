@@ -5,6 +5,7 @@
  * Class BxFiles
  * @package Boxalino\Intelligence\Helper
  */
+
 class Boxalino_Intelligence_Helper_BxFiles
 {
     /**
@@ -134,7 +135,7 @@ class Boxalino_Intelligence_Helper_BxFiles
             if (is_dir("$dir/$file")) {
                 self::delTree("$dir/$file");
             } else if (file_exists("$dir/$file")) {
-                @unlink("$dir/$file");
+                @unlink("$dir/$file"); //Why are we silencing
             }
         }
         return rmdir($dir);
@@ -179,7 +180,7 @@ class Boxalino_Intelligence_Helper_BxFiles
      */
     public function printFile($file) {
         $path = $this->getPath($file);
-        echo file_get_contents($path);
+        echo file_get_contents($path); // I don't see the printFile function called from anywhere, so why are we throwing an echo here?
     }
 
     /**

@@ -139,7 +139,7 @@ class TCompactProtocol extends TProtocol {
 	  $x = $this->trans_->readAll(1);
 	  $arr = unpack('C', $x);
 	  $byte = $arr[1];
-	  $idx += 1;
+	  $idx++; //Executes faster
 	  $result |= ($byte & 0x7f) << $shift;
 	  if (($byte >> 7) === 0) {
 		return $idx;
@@ -524,7 +524,7 @@ class TCompactProtocol extends TProtocol {
 	  $x = $this->trans_->readAll(1);
 	  $arr = unpack('C', $x);
 	  $byte = $arr[1];
-	  $idx += 1;
+	  $idx++; // Executes faster
 	  if ($shift < 32) {
 		$lo |= (($byte & 0x7f) << $shift) &
 		  0x00000000ffffffff;

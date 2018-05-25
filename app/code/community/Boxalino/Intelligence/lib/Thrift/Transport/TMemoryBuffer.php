@@ -79,7 +79,7 @@ class TMemoryBuffer extends TTransport {
 	return $ret;
   }
 
-  function getBuffer() {
+  public function getBuffer() {
 	return $this->buf_;
   }
 

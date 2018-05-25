@@ -126,7 +126,7 @@ Class Boxalino_Intelligence_Block_Banner extends Mage_Core_Block_Template{
         return $slides;
     }
 
-    public function getBannerSlide($id, $vals, &$counters) {
+    public function getBannerSlide($vals, &$counters) { // $id was never used
         $language = $this->bxHelperData->getLanguage();
         if(isset($vals['products_bxi_bxi_jssor_slide']) && sizeof($vals['products_bxi_bxi_jssor_slide']) > 0) {
             $json = $vals['products_bxi_bxi_jssor_slide'][0];
@@ -142,8 +142,9 @@ Class Boxalino_Intelligence_Block_Banner extends Mage_Core_Block_Template{
                     }
 
                     $pieces = explode('BX_COUNTER'.$i, $json);
+                    $piecesSize = count($pieces); // Always count arrays outside loops if possible
                     foreach($pieces as $j => $piece) {
-                        if($j >= sizeof($pieces)-1) {
+                        if($j >= $piecesSize-1) {
                             continue;
                         }
                         $pieces[$j] .= $counters[$i]++;
@@ -164,7 +165,7 @@ Class Boxalino_Intelligence_Block_Banner extends Mage_Core_Block_Template{
 
         $jsArray = array();
         foreach($slides as $id => $vals) {
-            if(isset($vals[$key]) && sizeof($vals[$key]) > 0) {
+            if(isset($vals[$key]) && !empty($vals[$key])) { // Empty executes faster
 
                 $jsons = json_decode($vals[$key][0], true);
                 if(isset($jsons[$language])) {

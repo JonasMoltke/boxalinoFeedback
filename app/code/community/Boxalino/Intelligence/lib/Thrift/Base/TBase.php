@@ -33,7 +33,7 @@ use Thrift\Type\TType;
  */
 abstract class TBase {
 
-  static $tmethod = array(TType::BOOL   => 'Bool',
+  public static $tmethod = array(TType::BOOL   => 'Bool',
 						  TType::BYTE   => 'Byte',
 						  TType::I16	=> 'I16',
 						  TType::I32	=> 'I32',
@@ -41,9 +41,9 @@ abstract class TBase {
 						  TType::DOUBLE => 'Double',
 						  TType::STRING => 'String');
 
-  abstract function read($input);
+  public abstract function read($input);
 
-  abstract function write($output);
+  public abstract function write($output);
 
   public function __construct($spec=null, $vals=null) {
 	if (is_array($spec) && is_array($vals)) {
@@ -56,6 +56,7 @@ abstract class TBase {
 	}
   }
 
+  // Seems unused - used for some kind of debugging?
   public function __wakeup()
   {
 	$this->__construct(get_object_vars($this));

@@ -59,7 +59,7 @@ class Boxalino_Intelligence_Block_Recommendation extends Mage_Catalog_Block_Prod
         preg_match_all("/\{\{(.*?)\}\}/",$content, $results);
         if(isset($results[1])){
             foreach($results[1] as $result){
-                if(strpos($result,'boxalino_intelligence/recommendation')){
+                if(strpos($result,'boxalino_intelligence/recommendation') === true){ // Match is not equal to identical
                     preg_match_all("/[-^\s](.*?)\=\"(.*?)\"/",$result, $sectionResults);
                     $result_holder = array();
                     foreach($sectionResults[1] as $index => $sectionResult){
@@ -234,8 +234,9 @@ class Boxalino_Intelligence_Block_Recommendation extends Mage_Catalog_Block_Prod
         if($this->getData('widget') == 'noresults') {
             $config = Mage::getStoreConfig('bxSearch/noresults');
             $widget = $config['widget'];
-            $this->bxHelperData->getAdapter()->flushResponses();
-            $this->bxHelperData->getAdapter()->getRecommendation(
+            $adapter = $this->bxHelperData->getAdapter(); // No need for getting the adapter several times
+            $adapter->flushResponses();
+            $adapter->getRecommendation(
                 $widget,
                 $context,
                 $scenario,
@@ -247,14 +248,14 @@ class Boxalino_Intelligence_Block_Recommendation extends Mage_Catalog_Block_Prod
         $entity_ids = array();
         try{
             $config = $this->bxHelperData->getWidgetConfig($widget);
-            $entity_ids = $this->bxHelperData->getAdapter()->getRecommendation(
+            $entity_ids = $adapter->getRecommendation(
                 $widget,
                 $context,
                 $scenario,
                 $config['min'],
                 $config['max']
             );
-            $this->setData('title', $this->bxHelperData->getAdapter()->getSearchResultTitle($widget, $this->getData('title')));
+            $this->setData('title', $adapter->getSearchResultTitle($widget, $this->getData('title')));
         }catch(\Exception $e){
             Mage::logException($e);
         }

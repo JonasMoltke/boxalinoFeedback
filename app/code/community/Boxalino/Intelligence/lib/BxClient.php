@@ -495,7 +495,7 @@ class BxClient
 			
 			$choiceInquiry = new \com\boxalino\p13n\api\thrift\ChoiceInquiry();
 			$choiceInquiry->choiceId = $request->getChoiceId();
-			if(sizeof($choiceInquiries) == 0 && $this->getChoiceIdOverwrite()) {
+			if(empty($choiceInquiries) && $this->getChoiceIdOverwrite()) { //Executes faster
 				$choiceInquiry->choiceId = $this->getChoiceIdOverwrite();
 			}
 			if($this->isTest === true || ($this->isDev && $this->isTest === null)) {

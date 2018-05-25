@@ -31,4 +31,4 @@ class Boxalino_Intelligence_Block_SearchMessage extends Mage_Core_Block_Template
 
 }
 
-?>
+// We do not want to permit a closing tag at the end of a PHP file

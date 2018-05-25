@@ -42,7 +42,7 @@ class TProtocolException extends TException {
   const SIZE_LIMIT = 3;
   const BAD_VERSION = 4;
 
-  function __construct($message=null, $code=0) {
+  public function __construct($message=null, $code=0) {
 	parent::__construct($message, $code);
   }
 }

@@ -129,7 +129,9 @@ class BxAutocompleteRequest
 		$autocompleteRequest->searchQuery = $this->bxSearchRequest->getSimpleSearchQuery();
         $autocompleteRequest->searchChoiceId = $this->bxSearchRequest->getChoiceId();
 		$autocompleteRequest->autocompleteQuery = $this->getAutocompleteQuery();
-		
+
+        // Not a big deal as sizeof is just a alias for count
+        // but count is usually more common to use because sizeof in most coding languages works in a different way
 		if(sizeof($this->propertyQueries)>0) {
 			$autocompleteRequest->propertyQueries = $this->propertyQueries;
 		}

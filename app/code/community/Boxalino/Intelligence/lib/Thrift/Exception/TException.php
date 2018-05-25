@@ -39,7 +39,7 @@ use Thrift\Base\TBase;
  * @param mixed $p2 Code (integer) or values (array)
  */
 class TException extends \Exception {
-  function __construct($p1=null, $p2=0) {
+  public function __construct($p1=null, $p2=0) {
 	if (is_array($p1) && is_array($p2)) {
 	  $spec = $p1;
 	  $vals = $p2;
@@ -54,7 +54,7 @@ class TException extends \Exception {
 	}
   }
 
-  static $tmethod = array(TType::BOOL   => 'Bool',
+  public static $tmethod = array(TType::BOOL   => 'Bool',
 						  TType::BYTE   => 'Byte',
 						  TType::I16	=> 'I16',
 						  TType::I32	=> 'I32',

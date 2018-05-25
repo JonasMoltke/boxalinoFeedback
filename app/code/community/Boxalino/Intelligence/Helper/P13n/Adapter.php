@@ -244,7 +244,7 @@ class Boxalino_Intelligence_Helper_P13n_Adapter{
                     $entity_ids[$id] = $id;
                 }
 
-                if (count($entity_ids) > 0) {
+                if (!empty($entity_ids)) { //Executes faster than count
                     $_data['products'] = $autocomplete->getListValues($entity_ids);
                 }
 
@@ -345,7 +345,7 @@ class Boxalino_Intelligence_Helper_P13n_Adapter{
     protected function setPrefixContextParameter($prefix){
         $requestParams = Mage::app()->getRequest()->getParams();
         foreach ($requestParams as $key => $value) {
-            if(strpos($key, $prefix) == 0) {
+            if(strpos($key, $prefix) === 0) {
                 self::$bxClient->addRequestContextParameter($key, $value);
             }
         }
@@ -501,7 +501,7 @@ class Boxalino_Intelligence_Helper_P13n_Adapter{
                 }
             }
         }
-        if(sizeof($systemParamValues) > 0) {
+        if(!empty($systemParamValues)) { //Executes faster
             foreach ($systemParamValues as $key => $systemParam) {
                 if(isset($systemParam['additional'])){
                     $bxHelperData->setSystemParams($key, $systemParam['values']);

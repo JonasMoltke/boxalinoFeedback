@@ -8,7 +8,7 @@ class Boxalino_Intelligence_Helper_BxIndexConfig
     /**
      * @var array
      */
-    private $indexConfig = array();
+    private $indexConfig = array(); // Private variables should be prefixed with an underscore
 
 
     /**
@@ -112,7 +112,7 @@ class Boxalino_Intelligence_Helper_BxIndexConfig
      * @return mixed
      * @throws \Exception
      */
-    private function getAccountArray($account) {
+    private function getAccountArray($account) { // private functions should be prefixed with an underscore
         if(isset($this->indexConfig[$account])) {
             return $this->indexConfig[$account];
         }
@@ -124,7 +124,7 @@ class Boxalino_Intelligence_Helper_BxIndexConfig
      * @return mixed
      * @throws \Exception
      */
-    private function getAccountFirstLanguageArray($account) {
+    private function getAccountFirstLanguageArray($account) { // private functions should be prefixed with an underscore
         $accountArray = $this->getAccountArray($account);
         foreach($accountArray as $l => $vals) {
             return $vals;
@@ -138,7 +138,7 @@ class Boxalino_Intelligence_Helper_BxIndexConfig
      * @return mixed
      * @throws \Exception
      */
-    private function getAccountLanguageArray($account, $language) {
+    private function getAccountLanguageArray($account, $language) { // private functions should be prefixed with an underscore
         $accountArray = $this->getAccountArray($account);
         if(isset($accountArray[$language])) {
             return $accountArray[$language];

@@ -17,7 +17,7 @@ class Boxalino_Intelligence_Block_Layer_Filter_Attribute extends Mage_Catalog_Bl
      * @param string $template
      * @return $this
      */
-    public function setTemplate($template){
+    public function setTemplate(){ // Unused variable
         $this->_template = 'boxalino/catalog/layer/filter.phtml';
         return $this;
     }

@@ -268,7 +268,7 @@ class BxChooseResponse
                 continue;
             }
             foreach($fieldValueMap as $fieldName => $fieldValues) {
-                if(sizeof($fieldValues)>0) {
+                if(!empty($fieldValues)) { //Executes faster
                     if($returnOneValue) {
                         return $fieldValues[0];
                     } else {

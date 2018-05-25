@@ -138,14 +138,17 @@ class BxFacets
     public function getFieldNames() {
         $fieldNames = array();
 
-        if($this->searchResult && (sizeof($this->facets) !== sizeof($this->searchResult->facetResponses))) {
+        $facetsSize = sizeof($this->facets);
+        $facetResponsesSize = sizeof($this->searchResult->facetResponses);
+
+        if($this->searchResult && ($facetsSize !== $facetResponsesSize)) { //Execute sizeof/count outside loops
             $this->forceIncludedFacets = array();
             foreach($this->searchResult->facetResponses as $facetResponse) {
                 if(!isset($this->facets[$facetResponse->fieldName])) {
                     $this->facets[$facetResponse->fieldName] = [
                         'label' => $facetResponse->fieldName,
                         'type' => $facetResponse->numerical ? 'ranged' : 'list',
-                        'order' => sizeof($this->facets),
+                        'order' => $facetsSize,
                         'selectedValues' => [],
                         'boundsOnly' => $facetResponse->range,
                         'maxCount' => -1
@@ -156,7 +159,7 @@ class BxFacets
         }
         foreach($this->facets as $fieldName => $facet) {
             $facetResponse = $this->getFacetResponse($fieldName);
-            if(!is_null($facetResponse) && (sizeof($facetResponse->values)>0 || sizeof($facet['selectedValues'])>0)) {
+            if(!is_null($facetResponse) && (!empty($facetResponse->values) || !empty($facet['selectedValues']))) { //Executes faster
                 $fieldNames[$fieldName] = array('fieldName'=>$fieldName, 'returnedOrder'=> sizeof($fieldNames));
             }
         }

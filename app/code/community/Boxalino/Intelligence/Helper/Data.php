@@ -294,7 +294,7 @@ class Boxalino_Intelligence_Helper_Data extends Mage_Core_Helper_Data
         return $widgetConfig;
     }
 
-    public function getCmsRecommendationBlocks($widgetName) {
+    public function getCmsRecommendationBlocks() { // Parameter not used
 
       $recs = array();
       $recs[] = array(
@@ -730,7 +730,7 @@ class Boxalino_Intelligence_Helper_Data extends Mage_Core_Helper_Data
         $seoPageTitle = $this->getExtraInfoWithKey('bx-page-title');
         return $seoPageTitle;
       }
-      return;
+      //Return not needed
     }
 
     public function getSEOMetaTitle(){
@@ -738,7 +738,7 @@ class Boxalino_Intelligence_Helper_Data extends Mage_Core_Helper_Data
         $seoMetaTitle = $this->getExtraInfoWithKey('bx-html-meta-title');
         return $seoMetaTitle;
       }
-      return;
+      //Return not needed
     }
 
     public function getSEOMetaDescription(){
@@ -746,7 +746,7 @@ class Boxalino_Intelligence_Helper_Data extends Mage_Core_Helper_Data
         $seoMetaDescription = $this->getExtraInfoWithKey('bx-html-meta-description');
         return $seoMetaDescription;
       }
-      return;
+      //Return not needed
     }
 
     public function getExtraInfoWithKey($key){
@@ -757,6 +757,6 @@ class Boxalino_Intelligence_Helper_Data extends Mage_Core_Helper_Data
         $extraInfo = $this->getAdapter()->getResponse()->getExtraInfo($key, '', $choice);
         return $extraInfo;
       }
-      return;
+      //Return not needed
     }
 }
