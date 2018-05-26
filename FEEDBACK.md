@@ -64,14 +64,13 @@ And probably more places. This is something to be played around with. This could
 - This should be implemented in foreach loops at least
 - Does not have a huge impact, but everything counts
 
-
 #### Public vs procted block constructors
 In almost any case the block ``_constructor`` functions should be defined as protected, but i see that its quite the opposite in this extension.
 
-#### Several classes in one file
-I know it works, but its considered pretty bad practice.
+#### Javascript optimization
+I really think that compiling boxalinoFacets.js and boxalinoAutocomplete.js with **Google Closure Compiler** could help the browser performance alot.
 
-[lib/P13nService.php](https://github.com/boxalino/plugin-magento1-v2/blob/master/app/code/community/Boxalino/Intelligence/lib/P13nService.php) should be splitted to several files
+https://closure-compiler.appspot.com/home
 
 #### Documentation
 Ok, so im not the biggest fan of documentation overkill but it does become handy.
@@ -100,6 +99,8 @@ In some files the code is very readable, has perfect indents and spacing. Other 
 
 Really needs some indents and line breaks in order to get a better and quicker overview.\
 Also i find this important because its a open source and really should be code you can be proud of showing.
+
+
 
 #### Thoughts
 

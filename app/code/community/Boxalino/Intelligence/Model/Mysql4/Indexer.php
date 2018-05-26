@@ -1740,14 +1740,22 @@ abstract class Boxalino_Intelligence_Model_Mysql4_Indexer extends Mage_Core_Mode
      */
     protected function _setLastIndex()
     {
+        /*
+         * No need for loading the whole indexer collection
+         * By loading with singleton by getProcessByCode we can just do a if, without need for a foreach
+         */
         $dates = array();
-        $indexes = Mage::getModel('index/indexer')->getProcessesCollection()->getData();
-        foreach ($indexes as $index) {
-            if ($index['indexer_code'] == 'boxalinoexporter_indexer' && !empty($index['started_at'])) {
-                $dates[] = DateTime::createFromFormat('Y-m-d H:i:s', $index['started_at']);
-            } elseif ($index['indexer_code'] == 'boxalinoexporter_delta' && !empty($index['ended_at'])) {
-                $dates[] = DateTime::createFromFormat('Y-m-d H:i:s', $index['ended_at']);
-            }
+        $exporterIndexer = Mage::getSingleton('index/indexer')->getProcessByCode('boxalinoexporter_indexer')->getData();
+        $exporterDelta = Mage::getSingleton('index/indexer')->getProcessByCode('boxalinoexporter_delta')->getData();
+
+        if (!empty($exporterIndexer['started_at'])) {
+
+            $dates[] = DateTime::createFromFormat('Y-m-d H:i:s', $exporterIndexer['started_at']);
+
+        } elseif (!empty($exporterDelta['ended_at'])) {
+
+            $dates[] = DateTime::createFromFormat('Y-m-d H:i:s', $exporterDelta['ended_at']);
+
         }
         if (count($dates) == 2) {
             if ($dates[0] > $dates[1]) {

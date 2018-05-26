@@ -1,20 +1,30 @@
 <?php
 /** @var Mage_CatalogSearch_Block_Result $this */
+/*
+ * No reason for ending php tags to constantly start them again and several echo's etc.
+ */
+
 if ($this->correctedQuery != null) {
-    ?>
+
+    echo '
     <h1>
-        <a href="<?php echo $this->escapeUrl($this->getCorrectedQueryLink()); ?>"><?php echo $this->__("Did you mean") . ": "; echo "'" . $this->escapeHtml($this->correctedQuery) ."' ?"; ?></a>
-    </h1>
-    <?php
+        <a href="' . $this->escapeUrl($this->getCorrectedQueryLink()) . '">' . $this->__("Did you mean") . ": " . $this->escapeHtml($this->correctedQuery) ."' ?" . '</a>
+    </h1>';
+
 }
-?>
-<?php for($i=0; $i<$this->getSubPhrasesResultCount(); $i++) : ?>
-    <h1>
-        <a href="<?php echo $this->escapeUrl($this->getSearchQueryLink($i)); ?>"><?php echo $this->escapeHtml($this->getSubPhrasesResultText($i)); ?></a>
-    </h1>
-    <?php
+
+//Calculate outside loop
+$subPhrasesCount = $this->getSubPhrasesResultCount();
+
+//This for loop executes so much faster
+for($i=0; $i<$subPhrasesCount; $i++) {
+
     Boxalino_Intelligence_Block_Product_List::$number = $i;
-    echo $this->getProductListHtml();
-    echo "<br />";
-    ?>
-<?php endfor; ?>
+
+    echo '
+        <h1>
+            <a href="' . $this->escapeUrl($this->getSearchQueryLink($i)) . '">' . $this->escapeHtml($this->getSubPhrasesResultText($i)) . '</a>
+        </h1>
+
+        ' . $this->getProductListHtml() . '<br />';
+}
