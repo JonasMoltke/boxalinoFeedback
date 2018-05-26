@@ -1,7 +1,7 @@
 # Feedback for Boxalino Magento 1.x v2 plug-in
 
 ## Introduction
-I added some comments in a few commits in the code. You will find my commits right [here](https://github.com/JonasMoltke/boxalinoFeedback/commits/master).
+I added some comments in a few commits in the code. You will find my commits right [here](https://github.com/JonasMoltke/boxalinoFeedback/commits?author=Jonassinful).
 
 ## Feedback
 
