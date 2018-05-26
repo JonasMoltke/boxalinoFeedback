@@ -108,4 +108,6 @@ I will admit this is a whole new way of programming in Magento for me as you com
 
 Normally this would be considered bad practice, but i really do see why it can be so effective for speeding up the system avoiding the use of Magento's data set aswell as the Zend and Varien framework as much as possible.
 
-I do find it quite interesting and exciting working this way as im a sucker for Both the Magento framework and native PHP
+I do find it quite interesting and exciting working this way as im a huge fan of both the Magento framework and native PHP.
+
+I'm "happy" to see so many functions and views that performance wise could be improved.
